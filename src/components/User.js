@@ -50,7 +50,6 @@ class User extends Component {
                 </td>
             </tr>
         });
-
         return (
             <div>
                 <AppNavbar/>
