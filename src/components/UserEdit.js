@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
+import React, {Component} from 'react';
+import {Link, withRouter} from 'react-router-dom';
+import {Button, Container, Form, FormGroup, Input, Label} from 'reactstrap';
 import AppNavbar from '../AppNavbar';
 
 class UserEdit extends Component {
@@ -23,8 +23,8 @@ class UserEdit extends Component {
 
     async componentDidMount() {
         if (this.props.match.params.id !== 'new') {
-            const accident = await (await fetch(`update-user/${this.props.match.params.id}`)).json();
-            this.setState({item: accident});
+            const user = await (await fetch(`/api/v1/update-user/${this.props.match.params.id}`)).json();
+            this.setState({item: user});
         }
     }
 
@@ -41,7 +41,7 @@ class UserEdit extends Component {
         event.preventDefault();
         const {item} = this.state;
 
-        await fetch('/update-user/', {
+        await fetch('/api/v1/update-user/' + item.id, {
             method: (item.id) ? 'PUT' : 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -54,7 +54,8 @@ class UserEdit extends Component {
 
     render() {
         const {item} = this.state;
-        const title = <h2>{item.id ? 'Edit Accident' : 'Create accident'}</h2>;
+        const title = <h2>{item.id ? 'Edit user' : 'Create new user'}</h2>;
+
 
         return <div>
             <AppNavbar/>
@@ -64,7 +65,7 @@ class UserEdit extends Component {
                     <FormGroup>
                         <Label for="username">username</Label>
                         <Input type="text" name="username" id="username" value={item.username || ''}
-                               onChange={this.handleChange} autoComplete="name"/>
+                               onChange={this.handleChange} autoComplete="username"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="note">firstName</Label>
@@ -78,7 +79,7 @@ class UserEdit extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">password</Label>
-                        <Input type="text" name="password" id="password" value={item.password || ''}
+                        <Input type="password" name="password" id="password" value={item.password || ''}
                                onChange={this.handleChange} autoComplete="password"/>
                     </FormGroup>
                     <FormGroup>

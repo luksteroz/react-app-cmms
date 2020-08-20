@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table } from 'reactstrap';
+import React, {Component} from 'react';
+import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 import AppNavbar from '../AppNavbar';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 class User extends Component {
@@ -14,13 +14,13 @@ class User extends Component {
 
     componentDidMount() {
         this.setState({isLoading: true});
-        fetch('users/')
+        fetch('/api/v1/users')
             .then(response => response.json())
             .then(data => this.setState({users: data, isLoading: false}));
     }
 
     async remove(id) {
-        await fetch(`users/${id}`, {
+        await fetch(`/api/v1/update-user/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -60,7 +60,7 @@ class User extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/users">Add new user</Button>
+                        <Button size="sm" color="danger" tag={Link} to="/users">Add new user</Button>
                     </div>
                     <h3>All users</h3>
                     <Table className="mt-4">
