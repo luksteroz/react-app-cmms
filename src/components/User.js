@@ -9,18 +9,24 @@ class User extends Component {
     constructor(props) {
         super(props);
         this.state = {users: [], isLoading: true};
-        // this.end = this.end.bind(this);
+        this.remove = this.remove.bind(this);
     }
 
     componentDidMount() {
         this.setState({isLoading: true});
-        fetch('/users')
+        fetch('users/')
             .then(response => response.json())
-            .then(data => this.setState({users: data.users, isLoading: false}));
+            .then(data => this.setState({users: data, isLoading: false}));
     }
 
-    async del(id) {
-        await fetch(`/delete-user/${id}`).then(() => {
+    async remove(id) {
+        await fetch(`users/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(() => {
             let updatedUsers = [...this.state.users].filter(i => i.id !== id);
             this.setState({users: updatedUsers});
         });
@@ -33,19 +39,18 @@ class User extends Component {
             return <p>Loading...</p>;
         }
 
-
         const userList = users.map(user => {
-            // const address = `${accidents.address || ''} ${accidents.city || ''} ${accidents.stateOrProvince || ''}`;
             return <tr key={user.id}>
-                <td style={{whiteSpace: 'nowrap'}}>{user.id}</td>
+                <td style={{whiteSpace: 'nowrap'}}>{user.username}</td>
                 <td>{user.firstName}</td>
                 <td>{user.lastName}</td>
-                <td>{user.username}</td>
+                <td>{user.enabled}</td>
                 <td>{user.created}</td>
+                <td>{user.lastUpdated}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/users/" + user.id}>Edit user</Button>
-                        <Button size="sm" color="danger" onClick={() => this.del(users.id)}>Delete</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"users/" + user.id}>Edit user</Button>
+                        <Button size="sm" color="danger" onClick={() => this.remove(users.id)}>Delete</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -57,14 +62,16 @@ class User extends Component {
                     <div className="float-right">
                         <Button color="success" tag={Link} to="/users">Add new user</Button>
                     </div>
-                    <h3>All Accidents</h3>
+                    <h3>All users</h3>
                     <Table className="mt-4">
                         <thead>
                         <tr>
+                            <th width="20%">login</th>
                             <th width="20%">firstName</th>
-                            <th width="20%">lastName</th>
-                            <th>username</th>
-                            <th>created</th>
+                            <th>lastname</th>
+                            <th>lastname</th>
+                            <th>created date</th>
+                            <th>last updated date</th>
                             <th width="10%">Actions</th>
                         </tr>
                         </thead>
