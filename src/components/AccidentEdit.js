@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
+import React, {Component} from 'react';
+import {Link, withRouter} from 'react-router-dom';
+import {Button, Container, Form, FormGroup, Input, Label} from 'reactstrap';
 import AppNavbar from '../AppNavbar';
 
 class AccidentEdit extends Component {
@@ -24,7 +24,7 @@ class AccidentEdit extends Component {
 
     async componentDidMount() {
         if (this.props.match.params.id !== 'new') {
-            const accident = await (await fetch(`end-accident/${this.props.match.params.id}`)).json();
+            const accident = await (await fetch(`/api/v1/end-accident/${this.props.match.params.id}`)).json();
             this.setState({item: accident});
         }
     }
@@ -42,7 +42,7 @@ class AccidentEdit extends Component {
         event.preventDefault();
         const {item} = this.state;
 
-        await fetch('http://localhost:8080/api/v1/end-accident/', {
+        await fetch('/api/v1/end-accident/', {
             method: (item.id) ? 'PUT' : 'POST',
             headers: {
                 'Accept': 'application/json',

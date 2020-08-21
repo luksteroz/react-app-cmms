@@ -11,6 +11,7 @@ class Home extends Component {
       <div>
         <AppNavbar />
         <Container fluid>
+               <h2>Administrator menu</h2>
           <Button color="link">
             {" "}
             <Link to="/accidents"> Manage Accidents </Link>
@@ -19,10 +20,12 @@ class Home extends Component {
             {" "}
             <Link to="/users"> Manage Users </Link>
           </Button>
+                          <Button color="link"><Link to="/equipments">Manage Equipments</Link></Button>
+                    <Button color="link"><Link to="/orders">Manage Orders</Link></Button>
         </Container>{" "}
       </div>
     );
   }
-}
 
 export default Home;
+  
