@@ -1,14 +1,6 @@
-import React, { Component } from "react";
-import {
-  Collapse,
-  Nav,
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  NavItem,
-  NavLink,
-} from "reactstrap";
-import { Link } from "react-router-dom";
+import React, {Component} from "react";
+import {Collapse, Nav, Navbar, NavbarBrand, NavItem, NavLink,} from "reactstrap";
+import {Link} from "react-router-dom";
 
 export default class AppNavbar extends Component {
   constructor(props) {
@@ -25,22 +17,23 @@ export default class AppNavbar extends Component {
 
   render() {
     return (
+
       <Navbar className="navBar" color="dark" dark expand="md">
-        <NavbarBrand tag={Link} to="/">
-          Home
-        </NavbarBrand>
-                  <div><NavbarBrand tag={Link} to="/">Home</NavbarBrand></div>
-            <div><NavbarBrand tag={Link} to="/login">Login</NavbarBrand></div>
-            <div><NavbarBrand tag={Link} to="/faq">FAQ</NavbarBrand></div>
-        <NavbarToggler onClick={this.toggle} />
+          {/*<NavbarToggler onClick={this.toggle}>*/}
+          <NavbarBrand tag={Link} to="/">Home</NavbarBrand>
+          <NavbarBrand tag={Link} to="/login">Login</NavbarBrand>
+          <NavbarBrand tag={Link} to="/faq">FAQ</NavbarBrand>
+          {/*</NavbarToggler>*/}
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="https://github.com/djeleniewicz">Help</NavLink>
+                <NavLink href="https://github.com/djeleniewicz/cmms">Code</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
+
       </Navbar>
+
     );
   }
 }

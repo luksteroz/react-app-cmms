@@ -41,7 +41,7 @@ class UserEdit extends Component {
         event.preventDefault();
         const {item} = this.state;
 
-        await fetch('/api/v1/update-user/' + item.id, {
+        await fetch('/api/v1/update-user/', {
             method: (item.id) ? 'PUT' : 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -55,7 +55,6 @@ class UserEdit extends Component {
     render() {
         const {item} = this.state;
         const title = <h2>{item.id ? 'Edit user' : 'Create new user'}</h2>;
-
 
         return <div>
             <AppNavbar/>
@@ -83,7 +82,7 @@ class UserEdit extends Component {
                                onChange={this.handleChange} autoComplete="password"/>
                     </FormGroup>
                     <FormGroup>
-                        <Button color="primary" type="submit">Save</Button>{' '}
+                        <Button color="primary" type="submit">Save</Button>
                         <Button color="secondary" tag={Link} to="/users">Cancel</Button>
                     </FormGroup>
                 </Form>

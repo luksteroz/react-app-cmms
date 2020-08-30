@@ -37,7 +37,7 @@ class Equipment extends Component {
                 <td>{equipment.intervalInspectionDays}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/update-equip/" + equipment.id}>Edit</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/equipments/" + equipment.id}>Edit</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -48,7 +48,7 @@ class Equipment extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/equip">Add new equipment</Button>
+                        <Button color="success" tag={Link} to="/equipments/">Add new equipment</Button>
                     </div>
                     <h3>All Equipments</h3>
                     <Table className="mt-4">

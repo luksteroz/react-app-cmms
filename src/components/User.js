@@ -49,7 +49,7 @@ class User extends Component {
                 <td>{user.lastUpdated}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"users/" + user.id}>Edit user</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/users/" + user.id}>Edit user</Button>
                         <Button size="sm" color="danger" onClick={() => this.remove(users.id)}>Delete</Button>
                     </ButtonGroup>
                 </td>
@@ -60,7 +60,7 @@ class User extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button size="sm" color="danger" tag={Link} to="/users">Add new user</Button>
+                        <Button size="sm" color="danger" tag={Link} to="/users/">Add new user</Button>
                     </div>
                     <h3>All users</h3>
                     <Table className="mt-4">

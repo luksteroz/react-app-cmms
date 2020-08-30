@@ -4,7 +4,7 @@ import AppNavbar from '../AppNavbar';
 import {Link} from 'react-router-dom';
 
 
-class Accident extends Component {
+class AccidentUser extends Component {
 
     constructor(props) {
         super(props);
@@ -14,7 +14,7 @@ class Accident extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('/api/v1/accidents/')
+        fetch('/api/v1/user/accidents')
             .then(response => response.json())
             .then(data => this.setState({accidents: data, isLoading: false}));
     }
@@ -73,4 +73,4 @@ class Accident extends Component {
     }
 }
 
-export default Accident;
+export default AccidentUser;
