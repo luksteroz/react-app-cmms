@@ -20,13 +20,13 @@ class Home extends Component {
           <Container fluid>
               <h2>Menu użytkownika</h2>
               <Button color="link"><Link to="/user/accidents">Lista zgłoszonych awarii</Link></Button>
-              <Button color="link"><Link to="/user/accidents">Dodaj zgłoszenie</Link></Button>
+              <Button color="link"><Link to="/user/add-accident">Dodaj zgłoszenie</Link></Button>
           </Container>
           <Container fluid>
               <h2>Menu utrzymania</h2>
-              <Button color="link"><Link to="/maintenance/accidents">Aktywne awarie</Link></Button>
+              <Button color="link"><Link to="/maintenance/active-accidents">Aktywne awarie</Link></Button>
               <Button color="link"><Link to="/maintenance/accidents">Moje podjęte awarie</Link></Button>
-              <Button color="link"><Link to="/maintenance/accidents">Archiwum awarii</Link></Button>
+              <Button color="link"><Link to="/maintenance/archive-accidents">Archiwum awarii</Link></Button>
               <Button color="link"><Link to="/maintenance/accidents">Dodaj zgłoszenie</Link></Button>
               <Button color="link"><Link to="/maintenance/accidents">Planowane przeglądy</Link></Button>
               <Button color="link"><Link to="/maintenance/accidents">Dodaj przegląd</Link></Button>

@@ -14,7 +14,7 @@ class AccidentMaintenance extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('/api/v1/maintenance/accidents')
+        fetch('/api/v1/maintenance/accidents-active')
             .then(response => response.json())
             .then(data => this.setState({accidents: data, isLoading: false}));
     }
@@ -48,7 +48,7 @@ class AccidentMaintenance extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="accidents/">Add new accident</Button>
+                        <Button color="success" tag={Link} to="archive-accidents/">Zamknięte awarie</Button>
                     </div>
                     <h3>All Accidents</h3>
                     <Table className="mt-4">

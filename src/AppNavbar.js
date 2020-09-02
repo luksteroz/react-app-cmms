@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Collapse, Nav, Navbar, NavbarBrand, NavItem, NavLink,} from "reactstrap";
+import {Collapse, Nav, Navbar, NavbarBrand, NavItem, NavLink} from "reactstrap";
 import {Link} from "react-router-dom";
 
 export default class AppNavbar extends Component {
@@ -22,8 +22,9 @@ export default class AppNavbar extends Component {
           {/*<NavbarToggler onClick={this.toggle}>*/}
           <NavbarBrand tag={Link} to="/">Home</NavbarBrand>
           <NavbarBrand tag={Link} to="/login">Login</NavbarBrand>
+          <NavbarBrand tag={Link} to="/my-user">Login</NavbarBrand>
           <NavbarBrand tag={Link} to="/faq">FAQ</NavbarBrand>
-          {/*</NavbarToggler>*/}
+          {/*asd</NavbarToggler>*/}
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>

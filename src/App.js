@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Home from './Home';
 import Accident from "./components/Accident";
 import AccidentEdit from "./components/AccidentEdit";
@@ -8,10 +9,10 @@ import User from "./components/User";
 import UserEdit from "./components/UserEdit";
 import Equipment from "./components/Equipment";
 import Login from "./components/Login";
-import LoginError from "./components/LoginError";
 import EquipmentEdit from "./components/EquipmentEdit";
 import AccidentUser from "./components/AccidentUser";
 import AccidentMaintenance from "./components/AccidentMaintenance";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   return (
@@ -30,10 +31,14 @@ function App() {
                 <Route path='/user/accidents' exact={true} component={AccidentUser}/>
 
                 {/*maintenance menu*/}
-                <Route path='/maintenance/accidents' component={AccidentMaintenance}/>
+                <Route path='/maintenance/active-accidents' component={AccidentMaintenance}/>
+                <Route path='/maintenance/archive-accidents' component={AccidentMaintenance}/>
 
+                {/*<Route path='/' component={LoginComponent}/>*/}
+                {/*<Route path='/' component={LoginComponent}/>*/}
+                <Route path='/my-user' component={UserProfile}/>
                 <Route path='/login' component={Login}/>
-                <Route path='/login-error' component={LoginError}/>
+                {/*<AuthenticatedRoute Route path="/courses" exact component={Home} />*/}
             </Switch>
         </Router>
     </div>
