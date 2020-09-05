@@ -22,7 +22,7 @@ class Equipment extends Component {
         const {equipments, isLoading} = this.state;
 
         if (isLoading) {
-            return <p>Loading...</p>;
+            return <p>ładowanie...</p>;
         }
 
         const equipmentList = equipments.map(equipment => {
@@ -37,7 +37,7 @@ class Equipment extends Component {
                 <td>{equipment.intervalInspectionDays}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/equipments/" + equipment.id}>Edit</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/equipments/" + equipment.id}>Edytuj</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -48,21 +48,21 @@ class Equipment extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/equipments/">Add new equipment</Button>
+                        <Button color="success" tag={Link} to="/equipments/">Dodaj nowy zasób</Button>
                     </div>
-                    <h3>All Equipments</h3>
+                    <h3>Wszystkie zasoby</h3>
                     <Table className="mt-4">
                         <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Nazwa</th>
                             <th>Model</th>
-                            <th>Producer</th>
-                            <th>Production date</th>
-                            <th>Location</th>
+                            <th>Producent</th>
+                            <th>Data produkcji</th>
+                            <th>Lokalizacja</th>
                             <th>Status</th>
-                            <th>Internal code</th>
-                            <th>Interval of Inspections [days]</th>
-                            <th width="10%">Actions</th>
+                            <th>Kod wew.</th>
+                            <th>Interwał przeglądów [dni]</th>
+                            <th width="10%">Akcje</th>
                         </tr>
                         </thead>
                         <tbody>

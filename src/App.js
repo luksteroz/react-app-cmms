@@ -13,6 +13,11 @@ import EquipmentEdit from "./components/EquipmentEdit";
 import AccidentUser from "./components/AccidentUser";
 import AccidentMaintenance from "./components/AccidentMaintenance";
 import UserProfile from "./components/UserProfile";
+import AccidentUserAdd from "./components/AccidentUserAdd";
+import AccidentMaintenanceArchive from "./components/AccidentMaintenanceArchive";
+import AccidentMaintenanceEnd from "./components/AccidentMaintenanceEnd";
+import AccidentMaintenanceAssign from "./components/AccidentMaintenanceAssign";
+import AuthService from "./services/AuthService";
 
 function App() {
   return (
@@ -29,15 +34,21 @@ function App() {
                 <Route path='/equipments/:id' component={EquipmentEdit}/>
                 {/*user menu*/}
                 <Route path='/user/accidents' exact={true} component={AccidentUser}/>
+                <Route path='/user/add-accident' component={AccidentUserAdd}/>
 
                 {/*maintenance menu*/}
                 <Route path='/maintenance/active-accidents' component={AccidentMaintenance}/>
-                <Route path='/maintenance/archive-accidents' component={AccidentMaintenance}/>
+                <Route path='/maintenance/archive-accidents' component={AccidentMaintenanceArchive}/>
+                <Route path='/maintenance/take-accident/:id' component={AccidentMaintenanceAssign}/>
+                <Route path='/maintenance/end-accident/:id' component={AccidentMaintenanceEnd}/>
 
                 {/*<Route path='/' component={LoginComponent}/>*/}
                 {/*<Route path='/' component={LoginComponent}/>*/}
                 <Route path='/my-user' component={UserProfile}/>
                 <Route path='/login' component={Login}/>
+                <Route path='/logout' component={AuthService.logout()}>
+                    {/*<Redirect strict from="/logout" to="/"/>*/}
+                </Route>
                 {/*<AuthenticatedRoute Route path="/courses" exact component={Home} />*/}
             </Switch>
         </Router>

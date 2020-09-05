@@ -41,7 +41,7 @@ class User extends Component {
 
         const userList = users.map(user => {
             return <tr key={user.id}>
-                <td style={{whiteSpace: 'nowrap'}}>{user.username}</td>
+                <td style={{whiteSpace: ''}}>{user.username}</td>
                 <td>{user.firstName}</td>
                 <td>{user.lastName}</td>
                 <td>{user.enabled}</td>
@@ -49,8 +49,8 @@ class User extends Component {
                 <td>{user.lastUpdated}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"/users/" + user.id}>Edit user</Button>
-                        <Button size="sm" color="danger" onClick={() => this.remove(users.id)}>Delete</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"/users/" + user.id}>Edytuj</Button>
+                        <Button size="sm" color="danger" onClick={() => this.remove(users.id)}>Usuń</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -66,13 +66,13 @@ class User extends Component {
                     <Table className="mt-4">
                         <thead>
                         <tr>
-                            <th width="20%">login</th>
-                            <th width="20%">firstName</th>
-                            <th>lastname</th>
-                            <th>lastname</th>
-                            <th>created date</th>
-                            <th>last updated date</th>
-                            <th width="10%">Actions</th>
+                            <th>login</th>
+                            <th>Imie</th>
+                            <th>Nazwisko</th>
+                            <th>Aktywny</th>
+                            <th>Data utworzenia</th>
+                            <th> Data edycji</th>
+                            <th width="10%">Akcje</th>
                         </tr>
                         </thead>
                         <tbody>

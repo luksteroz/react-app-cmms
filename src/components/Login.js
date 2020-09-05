@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import AuthService from "../services/AuthService";
 
 const required = value => {
     if (!value) {
@@ -52,23 +53,14 @@ export default class Login extends Component {
         this.form.validateAll();
 
         if (this.checkBtn.context._errors.length === 0) {
-            await fetch('/api/v1/auth/signin/', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(this.state),
-            }).then(response => {
-                if (response.accessToken) {
-                    localStorage.setItem("user", JSON.stringify(response.data));
-                }
+            await AuthService.login(this.state);
 
-                return response.data;
-            }).then(() => {
-                this.props.history.push("/");
-                window.location.reload();
-            })
+            this.props.history.push('/');
+            // if(returned == "OK") {
+            //         this.props.history.push('/');
+            // } else {
+            //     this.props.history.push('/fail-login')
+            // }
         } else {
             this.setState({
                 loading: false

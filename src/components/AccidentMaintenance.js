@@ -23,7 +23,7 @@ class AccidentMaintenance extends Component {
         const {accidents, isLoading} = this.state;
 
         if (isLoading) {
-            return <p>Loading...</p>;
+            return <p>ładowanie...</p>;
         }
 
         const accidentList = accidents.map(accident => {
@@ -36,8 +36,9 @@ class AccidentMaintenance extends Component {
                 <td>{accident.status.status}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"accidents/" + accident.id}>Szczegóły
-                            awarii</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"accidents/" + accident.id}>Szczegóły</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"accidents/" + accident.id}>Podejmij</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"accidents/" + accident.id}>Zakoncz</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -50,15 +51,15 @@ class AccidentMaintenance extends Component {
                     <div className="float-right">
                         <Button color="success" tag={Link} to="archive-accidents/">Zamknięte awarie</Button>
                     </div>
-                    <h3>All Accidents</h3>
+                    <h3>Wszystkie awarie</h3>
                     <Table className="mt-4">
                         <thead>
                         <tr>
-                            <th width="20%">Title</th>
-                            <th width="20%">Description</th>
-                            <th>Created By</th>
-                            <th>Priority</th>
-                            <th>Assigned to</th>
+                            <th width="20%">Tytuł</th>
+                            <th width="20%">Opis awariii</th>
+                            <th>Stworzony</th>
+                            <th>Piorytet</th>
+                            <th>Przypisany do</th>
                             <th>Status</th>
                             <th width="10%">Actions</th>
                         </tr>

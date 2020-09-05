@@ -10,7 +10,7 @@ class LoginError extends Component {
         return (
             <div>
                 <AppNavbar/>
-                <h1>Inncorect password</h1>
+                <h1>Inncorect login or password</h1>
                 <Button size="sm" color="danger" tag={Link} to="/">Back to home</Button>
             </div>
         );

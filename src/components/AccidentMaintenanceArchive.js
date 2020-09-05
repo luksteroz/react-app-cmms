@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 import AppNavbar from '../AppNavbar';
 import {Link} from 'react-router-dom';
-import authHeader from "../services/AuthHeader";
 
 
-class Accident extends Component {
+class AccidentMaintenanceArchive extends Component {
 
     constructor(props) {
         super(props);
@@ -15,10 +14,7 @@ class Accident extends Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('/api/v1/accidents/', {
-            headers:
-                authHeader()
-        })
+        fetch('/api/v1/maintenance/accidents-archive')
             .then(response => response.json())
             .then(data => this.setState({accidents: data, isLoading: false}));
     }
@@ -27,7 +23,7 @@ class Accident extends Component {
         const {accidents, isLoading} = this.state;
 
         if (isLoading) {
-            return <p>Loading...</p>;
+            return <p>ładowanie...</p>;
         }
 
         const accidentList = accidents.map(accident => {
@@ -40,8 +36,7 @@ class Accident extends Component {
                 <td>{accident.status.status}</td>
                 <td>
                     <ButtonGroup>
-                        <Button size="sm" color="primary" tag={Link} to={"accidents/" + accident.id}>Szczegóły
-                            awarii</Button>
+                        <Button size="sm" color="primary" tag={Link} to={"accidents/" + accident.id}>Szczegóły</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -52,17 +47,17 @@ class Accident extends Component {
                 <AppNavbar/>
                 <Container fluid>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="accidents/">Add new accident</Button>
+                        <Button color="success" tag={Link} to="/maintenance/active-accidents">Wróc</Button>
                     </div>
-                    <h3>All Accidents</h3>
+                    <h3>Wszystkie zakończone awarie</h3>
                     <Table className="mt-4">
                         <thead>
                         <tr>
-                            <th width="20%">Title</th>
-                            <th width="20%">Description</th>
-                            <th>Created By</th>
-                            <th>Priority</th>
-                            <th>Assigned to</th>
+                            <th width="20%">Tytuł</th>
+                            <th width="20%">Opis awariii</th>
+                            <th>Stworzony</th>
+                            <th>Piorytet</th>
+                            <th>Przypisany do</th>
                             <th>Status</th>
                             <th width="10%">Actions</th>
                         </tr>
@@ -77,4 +72,4 @@ class Accident extends Component {
     }
 }
 
-export default Accident;
+export default AccidentMaintenanceArchive;

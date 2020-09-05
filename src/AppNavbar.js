@@ -5,8 +5,11 @@ import {Link} from "react-router-dom";
 export default class AppNavbar extends Component {
   constructor(props) {
     super(props);
-    this.state = { isOpen: false };
+      this.state = {isOpen: false};
     this.toggle = this.toggle.bind(this);
+      this.state = {
+          currentUser: JSON.parse(sessionStorage.getItem("user"))
+      };
   }
 
   toggle() {
@@ -16,13 +19,22 @@ export default class AppNavbar extends Component {
   }
 
   render() {
+      const {currentUser} = this.state;
+      let userName;
+      if (currentUser === null) {
+          userName = "nieznajomy";
+      } else {
+          userName = currentUser.firstName;
+      }
     return (
-
       <Navbar className="navBar" color="dark" dark expand="md">
+          <h2>Witaj {userName}!</h2>
           {/*<NavbarToggler onClick={this.toggle}>*/}
-          <NavbarBrand tag={Link} to="/">Home</NavbarBrand>
-          <NavbarBrand tag={Link} to="/login">Login</NavbarBrand>
-          <NavbarBrand tag={Link} to="/my-user">Login</NavbarBrand>
+          <NavbarBrand tag={Link} to="/">Strona domowa</NavbarBrand>
+          {/* TODO zrobić panel dla użytkownika loguj/wyloguj/profil  */}
+          <NavbarBrand tag={Link} to="/login">Zaloguj</NavbarBrand>
+          <NavbarBrand tag={Link} to="/logout">Wyloguj</NavbarBrand>
+          <NavbarBrand tag={Link} to="/my-user">Mój użytkownik</NavbarBrand>
           <NavbarBrand tag={Link} to="/faq">FAQ</NavbarBrand>
           {/*asd</NavbarToggler>*/}
         <Collapse isOpen={this.state.isOpen} navbar>
@@ -32,7 +44,6 @@ export default class AppNavbar extends Component {
             </NavItem>
           </Nav>
         </Collapse>
-
       </Navbar>
 
     );

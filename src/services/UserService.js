@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authHeader from './Auth-Header';
+import authHeader from './AuthHeader';
 
 const API_URL = '/api/test/';
 
