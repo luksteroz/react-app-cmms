@@ -28,7 +28,7 @@ export default class AppNavbar extends Component {
       }
     return (
       <Navbar className="navBar" color="dark" dark expand="md">
-          <h2>Witaj {userName}!</h2>
+          {this.props.name && <h2>Witaj {this.props.name}!</h2>}
           {/*<NavbarToggler onClick={this.toggle}>*/}
           <NavbarBrand tag={Link} to="/">Strona domowa</NavbarBrand>
           {/* TODO zrobić panel dla użytkownika loguj/wyloguj/profil  */}

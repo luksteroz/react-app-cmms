@@ -5,11 +5,10 @@ import {Link} from "react-router-dom";
 import {Button, Container} from "reactstrap";
 import "./index.css";
 
-class Home extends Component {
-  render() {
+const Home = ({globalData}) => {
     return (
       <div>
-        <AppNavbar />
+        <AppNavbar name={globalData}/>
         <Container fluid>
             <h2>Menu administracyjne</h2>
             <Button color="link"><Link to="/accidents"> Zarządzanie awariami</Link></Button>
@@ -34,7 +33,6 @@ class Home extends Component {
           </Container>
       </div>
     );
-  }
 }
 
 export default Home;

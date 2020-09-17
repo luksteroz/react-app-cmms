@@ -16,6 +16,7 @@ const required = value => {
 
 export default class Login extends Component {
     constructor(props) {
+        console.log(props.getData);
         super(props);
         this.handleLogin = this.handleLogin.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -56,6 +57,7 @@ export default class Login extends Component {
             await AuthService.login(this.state);
 
             this.props.history.push('/');
+            this.props.getData('lets party start');
             // if(returned == "OK") {
             //         this.props.history.push('/');
             // } else {
